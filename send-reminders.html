@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Reminders &mdash; devter CRM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="logo">devter CRM</div>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add-slot.html">Availability</a>
+        <a href="add-customer.html">Add Customer</a>
+      </nav>
+      <a class="btn ghost" href="dashboard.html">Back to Dashboard</a>
+    </header>
+
+    <main class="utility-page reminders-page">
+      <section class="utility-hero">
+        <div class="hero-text">
+          <span class="pill subtle">Customer Care</span>
+          <h1>Send timely reminders with confidence</h1>
+          <p>
+            Reach customers on the phone numbers they trust. Personalize the
+            message, choose the delivery window, and keep every appointment on
+            track.
+          </p>
+          <div class="utility-stats">
+            <div>
+              <strong>96%</strong>
+              <span>SMS open rate</span>
+            </div>
+            <div>
+              <strong>2 min</strong>
+              <span>Average response time</span>
+            </div>
+            <div>
+              <strong>+18%</strong>
+              <span>Show-up improvement</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Today&apos;s Reminder Queue</h2>
+          <ul class="queue-list">
+            <li>
+              <div>
+                <strong>Anna Smith</strong>
+                <span>+1 646 555 0102</span>
+              </div>
+              <span class="badge confirmed">09:00 AM</span>
+            </li>
+            <li>
+              <div>
+                <strong>James Carter</strong>
+                <span>+1 917 555 0198</span>
+              </div>
+              <span class="badge pending">11:30 AM</span>
+            </li>
+            <li>
+              <div>
+                <strong>Lucia Ortega</strong>
+                <span>+1 347 555 0114</span>
+              </div>
+              <span class="badge feedback">03:00 PM</span>
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="utility-grid">
+        <article class="utility-card">
+          <div class="card-header">
+            <h2>Reminder Composer</h2>
+            <p>Choose who to notify, craft the message, and schedule delivery.</p>
+          </div>
+          <form class="utility-form">
+            <div class="form-row">
+              <label>
+                Appointment
+                <select>
+                  <option>Apr 25 &mdash; 09:00 AM · Anna Smith</option>
+                  <option>Apr 25 &mdash; 11:30 AM · James Carter</option>
+                  <option>Apr 25 &mdash; 03:00 PM · Lucia Ortega</option>
+                  <option>Apr 26 &mdash; 10:30 AM · Devon Turner</option>
+                </select>
+              </label>
+              <label>
+                Phone number
+                <input type="tel" placeholder="e.g. +1 415 555 0123" />
+              </label>
+            </div>
+            <div class="form-row">
+              <label>
+                Reminder type
+                <div class="input-group">
+                  <label class="chip">
+                    <input type="radio" name="reminder-type" checked />
+                    <span>SMS</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="reminder-type" />
+                    <span>Email</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="reminder-type" />
+                    <span>Both</span>
+                  </label>
+                </div>
+              </label>
+              <label>
+                Send window
+                <select>
+                  <option>1 hour before</option>
+                  <option>3 hours before</option>
+                  <option>1 day before</option>
+                  <option>Custom</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Message
+              <textarea rows="4" placeholder="Hi Anna, looking forward to your consultation tomorrow at 9:00 AM. Reply YES to confirm or call us to reschedule."></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn ghost" type="button">Preview Message</button>
+              <button class="btn primary" type="submit">Send Reminder</button>
+            </div>
+          </form>
+        </article>
+
+        <aside class="utility-sidebar">
+          <article class="utility-card compact">
+            <div class="card-header">
+              <h3>Saved templates</h3>
+              <p>Start from a proven script and personalize the details.</p>
+            </div>
+            <ul class="template-list">
+              <li>
+                <strong>Standard SMS</strong>
+                <p>Friendly reminder of the appointment time with confirmation keyword.</p>
+              </li>
+              <li>
+                <strong>Follow-up Check-in</strong>
+                <p>Encourage customers to reschedule or provide feedback.</p>
+              </li>
+              <li>
+                <strong>Post-visit Thank You</strong>
+                <p>Send appreciation and invite customers to book again.</p>
+              </li>
+            </ul>
+          </article>
+
+          <article class="utility-card compact">
+            <div class="card-header">
+              <h3>Delivery history</h3>
+              <p>Track every reminder sent over the last 24 hours.</p>
+            </div>
+            <table class="data-table mini">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Contact</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>08:45 AM</td>
+                  <td>Anna Smith</td>
+                  <td>SMS</td>
+                  <td><span class="tag success">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td>08:10 AM</td>
+                  <td>James Carter</td>
+                  <td>SMS</td>
+                  <td><span class="tag success">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td>Yesterday</td>
+                  <td>Lucia Ortega</td>
+                  <td>Email</td>
+                  <td><span class="tag neutral">Opened</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="dashboard-footer">
+      <div>
+        <strong>Need help?</strong>
+        <p>Contact support@devtercrm.com or call +1 800 555 2211.</p>
+      </div>
+      <div class="dashboard-footer-links">
+        <a href="#">Documentation</a>
+        <a href="#">Privacy</a>
+        <a href="#">Status</a>
+      </div>
+    </footer>
+  </body>
+</html>
