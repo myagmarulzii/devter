@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Customer &mdash; devter CRM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="logo">devter CRM</div>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add-slot.html">Availability</a>
+        <a href="send-reminders.html">Reminders</a>
+      </nav>
+      <a class="btn ghost" href="dashboard.html">Back to Dashboard</a>
+    </header>
+
+    <main class="utility-page add-customer-page">
+      <section class="utility-hero">
+        <div class="hero-text">
+          <span class="pill subtle">Customer Directory</span>
+          <h1>Capture customer details in one place</h1>
+          <p>
+            Create a complete record with verified contact information, communication
+            preferences, and helpful context so your team can deliver personalized
+            service every time.
+          </p>
+          <div class="utility-stats">
+            <div>
+              <strong>128</strong>
+              <span>Active customers</span>
+            </div>
+            <div>
+              <strong>12</strong>
+              <span>New this month</span>
+            </div>
+            <div>
+              <strong>89%</strong>
+              <span>Engagement rate</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Why capture details?</h2>
+          <ul class="queue-list">
+            <li>
+              <div>
+                <strong>Trusted communication</strong>
+                <span>Send reminders to verified numbers.</span>
+              </div>
+              <span class="badge confirmed">Fewer no-shows</span>
+            </li>
+            <li>
+              <div>
+                <strong>Tailored experiences</strong>
+                <span>Segment customers by intent or loyalty.</span>
+              </div>
+              <span class="badge pending">Higher retention</span>
+            </li>
+            <li>
+              <div>
+                <strong>Team alignment</strong>
+                <span>Share notes so staff know the context.</span>
+              </div>
+              <span class="badge feedback">Happy customers</span>
+            </li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="customer-form-section">
+        <div class="customer-form-grid">
+          <article class="utility-card">
+            <div class="card-header">
+              <h2>Customer details</h2>
+              <p>Fill out the essentials so you can reach and delight them later.</p>
+            </div>
+            <form class="customer-form">
+              <div class="form-row">
+                <label>
+                  Full name
+                  <input type="text" placeholder="e.g. Jordan Lee" />
+                </label>
+                <label>
+                  Phone number
+                  <input type="tel" placeholder="e.g. +1 415 555 0199" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  Email address
+                  <input type="email" placeholder="e.g. jordan@email.com" />
+                </label>
+                <label>
+                  Customer type
+                  <select>
+                    <option>Preferred</option>
+                    <option>New lead</option>
+                    <option>Walk-in</option>
+                    <option>Corporate</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Communication preferences
+                <div class="input-group chips">
+                  <label class="chip">
+                    <input type="checkbox" checked />
+                    <span>SMS</span>
+                  </label>
+                  <label class="chip">
+                    <input type="checkbox" checked />
+                    <span>Email</span>
+                  </label>
+                  <label class="chip">
+                    <input type="checkbox" />
+                    <span>Phone call</span>
+                  </label>
+                </div>
+              </label>
+              <div class="form-row">
+                <label>
+                  Preferred appointment day
+                  <select>
+                    <option>Any weekday</option>
+                    <option>Weekends</option>
+                    <option>Mondays &amp; Wednesdays</option>
+                    <option>Fridays</option>
+                  </select>
+                </label>
+                <label>
+                  Preferred time window
+                  <select>
+                    <option>Morning (8am &ndash; 12pm)</option>
+                    <option>Afternoon (12pm &ndash; 4pm)</option>
+                    <option>Evening (4pm &ndash; 7pm)</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Tags
+                <div class="input-group chips">
+                  <label class="chip">
+                    <input type="checkbox" checked />
+                    <span>Loyalty</span>
+                  </label>
+                  <label class="chip">
+                    <input type="checkbox" />
+                    <span>Upsell</span>
+                  </label>
+                  <label class="chip">
+                    <input type="checkbox" />
+                    <span>VIP</span>
+                  </label>
+                  <label class="chip">
+                    <input type="checkbox" />
+                    <span>Feedback</span>
+                  </label>
+                </div>
+              </label>
+              <label>
+                Notes
+                <textarea rows="4" placeholder="Share background details, preferences, or follow-up tasks."></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="btn ghost" type="button">Save &amp; add another</button>
+                <button class="btn primary" type="submit">Save customer</button>
+              </div>
+            </form>
+          </article>
+
+          <aside class="utility-sidebar">
+            <article class="utility-card compact">
+              <div class="card-header">
+                <h3>Quick verification</h3>
+                <p>Confirm key details before saving.</p>
+              </div>
+              <ul class="customer-summary">
+                <li>
+                  <span>Phone format</span>
+                  <strong>Valid international</strong>
+                </li>
+                <li>
+                  <span>Email status</span>
+                  <strong>Deliverable</strong>
+                </li>
+                <li>
+                  <span>Opt-in</span>
+                  <strong>SMS + Email</strong>
+                </li>
+              </ul>
+              <div class="summary-divider"></div>
+              <p class="summary-note">Need documents? Attach them after saving on the customer profile.</p>
+            </article>
+
+            <article class="utility-card compact">
+              <div class="card-header">
+                <h3>Upcoming commitments</h3>
+                <p>Link a future visit so reminders go out automatically.</p>
+              </div>
+              <div class="upcoming-list">
+                <div>
+                  <strong>Apr 28 · 02:30 PM</strong>
+                  <span>Merchandising Review</span>
+                </div>
+                <button class="btn ghost" type="button">Attach appointment</button>
+              </div>
+            </article>
+
+            <article class="utility-card compact">
+              <div class="card-header">
+                <h3>Recent activity</h3>
+                <p>See what your team last captured for this customer.</p>
+              </div>
+              <ul class="activity-list">
+                <li>
+                  <strong>Today</strong>
+                  <span>Added to loyalty program.</span>
+                </li>
+                <li>
+                  <strong>Last week</strong>
+                  <span>Completed product training session.</span>
+                </li>
+                <li>
+                  <strong>Last visit</strong>
+                  <span>Requested seasonal lookbook.</span>
+                </li>
+              </ul>
+            </article>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="dashboard-footer">
+      <div>
+        <strong>Need help?</strong>
+        <p>Contact support@devtercrm.com or call +1 800 555 2211.</p>
+      </div>
+      <div class="dashboard-footer-links">
+        <a href="#">Documentation</a>
+        <a href="#">Privacy</a>
+        <a href="#">Status</a>
+      </div>
+    </footer>
+  </body>
+</html>

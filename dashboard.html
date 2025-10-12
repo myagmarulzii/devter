@@ -106,6 +106,18 @@
             <p>Manage your customer directory, appointment pipeline, and recent activity without leaving this view.</p>
           </div>
         </div>
+        <div class="hub-toolbar">
+          <label class="search-field" for="hub-search">
+            <span class="search-label">Search records</span>
+            <input
+              type="search"
+              id="hub-search"
+              name="hub-search"
+              placeholder="Search customers, services, or updates"
+              aria-label="Search relationship hub records"
+            />
+          </label>
+        </div>
         <div class="tabbed-hub">
           <div class="tab-buttons" role="tablist" aria-label="Customer relationship hub">
             <button
@@ -133,6 +145,13 @@
             <button
               class="tab-button"
               type="button"
+              data-tab="updates"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-updates"
+              id="tab-updates-btn"
+            >
+              Latest Updates
               data-tab="activity"
               role="tab"
               aria-selected="false"
@@ -159,6 +178,7 @@
                       <th>Loyalty</th>
                       <th>Last Visit</th>
                       <th>Next Appointment</th>
+                      <th>Services Taken</th>
                       <th>Notes</th>
                     </tr>
                   </thead>
@@ -177,6 +197,7 @@
                       <td><span class="tag success">Gold</span></td>
                       <td>Apr 15, 2024</td>
                       <td>May 2, 2024 &middot; 09:00 AM</td>
+                      <td>18</td>
                       <td>Interested in product launch preview.</td>
                     </tr>
                     <tr>
@@ -193,6 +214,7 @@
                       <td><span class="tag neutral">Silver</span></td>
                       <td>Apr 11, 2024</td>
                       <td>Apr 28, 2024 &middot; 02:30 PM</td>
+                      <td>9</td>
                       <td>Requested follow-up consultation.</td>
                     </tr>
                     <tr>
@@ -209,6 +231,7 @@
                       <td><span class="tag success">Platinum</span></td>
                       <td>Apr 17, 2024</td>
                       <td>May 6, 2024 &middot; 11:15 AM</td>
+                      <td>22</td>
                       <td>Send VIP promo prior to visit.</td>
                     </tr>
                     <tr>
@@ -225,6 +248,7 @@
                       <td><span class="tag warning">Bronze</span></td>
                       <td>Apr 9, 2024</td>
                       <td>May 1, 2024 &middot; 04:00 PM</td>
+                      <td>5</td>
                       <td>Offer seasonal discount bundle.</td>
                     </tr>
                   </tbody>
@@ -250,6 +274,7 @@
                       <th>Service</th>
                       <th>Status</th>
                       <th>Assigned Staff</th>
+                      <th>Services Taken</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -261,6 +286,7 @@
                       <td>Retail Strategy Consultation</td>
                       <td><span class="tag success">Confirmed</span></td>
                       <td>Jordan Lee</td>
+                      <td>18</td>
                       <td>
                         <button class="btn ghost btn-small">Reschedule</button>
                       </td>
@@ -272,6 +298,7 @@
                       <td>Merchandising Review</td>
                       <td><span class="tag neutral">Pending</span></td>
                       <td>Jordan Lee</td>
+                      <td>9</td>
                       <td>
                         <button class="btn ghost btn-small">Confirm</button>
                       </td>
@@ -283,6 +310,7 @@
                       <td>Inventory Audit</td>
                       <td><span class="tag warning">Awaiting Prep</span></td>
                       <td>Stella Park</td>
+                      <td>22</td>
                       <td>
                         <button class="btn ghost btn-small">Notify</button>
                       </td>
@@ -294,6 +322,7 @@
                       <td>Point-of-Sale Training</td>
                       <td><span class="tag success">Confirmed</span></td>
                       <td>Jordan Lee</td>
+                      <td>5</td>
                       <td>
                         <button class="btn ghost btn-small">Reschedule</button>
                       </td>
@@ -302,6 +331,66 @@
                 </table>
               </div>
             </div>
+            <div class="tab-panel" id="tab-updates" role="tabpanel" hidden aria-labelledby="tab-updates-btn">
+              <div class="table-wrapper">
+                <table class="data-table compact">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Update</th>
+                      <th>Services Taken</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>08:45 AM</td>
+                      <td>
+                        <strong>Reminder sent</strong>
+                        <p>Automatic SMS reminder delivered to Anna Smith for her 09:00 AM appointment.</p>
+                      </td>
+                      <td>18</td>
+                    </tr>
+                    <tr>
+                      <td>08:10 AM</td>
+                      <td>
+                        <strong>Customer rescheduled</strong>
+                        <p>James Carter moved his merchandising review to Apr 25 at 11:30 AM.</p>
+                      </td>
+                      <td>9</td>
+                    </tr>
+                    <tr>
+                      <td>Yesterday</td>
+                      <td>
+                        <strong>Feedback received</strong>
+                        <p>Lucia Ortega rated her experience 5 stars and left a positive comment.</p>
+                      </td>
+                      <td>22</td>
+                    </tr>
+                    <tr>
+                      <td>Yesterday</td>
+                      <td>
+                        <strong>Slot added</strong>
+                        <p>New availability opened for Apr 29 by Jordan Lee.</p>
+                      </td>
+                      <td>5</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="hub-pagination" aria-label="Relationship hub pagination">
+          <button class="page-btn" type="button" data-page="prev" disabled>
+            Previous
+          </button>
+          <span class="pagination-status">
+            Page <span id="hub-page-current">1</span> of <span id="hub-page-total">1</span>
+          </span>
+          <button class="page-btn" type="button" data-page="next" disabled>
+            Next
+          </button>
+        </nav>
             <div class="tab-panel" id="tab-activity" role="tabpanel" hidden aria-labelledby="tab-activity-btn">
               <div class="panel-actions">
                 <div class="section-actions">
@@ -569,10 +658,180 @@
     <script>
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabPanels = document.querySelectorAll('.tab-panel');
+      const searchInput = document.getElementById('hub-search');
+      const pagination = document.querySelector('.hub-pagination');
+      const prevBtn = pagination?.querySelector('[data-page="prev"]');
+      const nextBtn = pagination?.querySelector('[data-page="next"]');
+      const currentPageEl = document.getElementById('hub-page-current');
+      const totalPageEl = document.getElementById('hub-page-total');
+      const ROWS_PER_PAGE = 3;
+      const tableState = new Map();
+
+      const getActiveTable = () => {
+        const activePanel = document.querySelector('.tab-panel.active');
+        return activePanel ? activePanel.querySelector('table') : null;
+      };
+
+      const updatePaginationStatus = (table) => {
+        if (!pagination || !currentPageEl || !totalPageEl) return;
+        const state = tableState.get(table);
+        const totalPages = state.totalPages;
+        const currentPage = totalPages === 0 ? 0 : state.page + 1;
+
+        currentPageEl.textContent = currentPage;
+        totalPageEl.textContent = totalPages;
+
+        if (prevBtn) {
+          prevBtn.disabled = state.page === 0;
+        }
+        if (nextBtn) {
+          nextBtn.disabled = state.page >= totalPages - 1 || totalPages === 0;
+        }
+      };
+
+      const ensureNoResultsRow = (table) => {
+        const existing = table.querySelector('tr.no-results');
+        if (existing) {
+          return existing;
+        }
+        const emptyRow = document.createElement('tr');
+        emptyRow.className = 'no-results';
+        const cell = document.createElement('td');
+        cell.colSpan = table.tHead ? table.tHead.rows[0].cells.length : 1;
+        cell.textContent = 'No matching records found.';
+        emptyRow.appendChild(cell);
+        table.tBodies[0].appendChild(emptyRow);
+        return emptyRow;
+      };
+
+      const updateTableRows = (table) => {
+        const state = tableState.get(table);
+        if (!state) return;
+
+        const start = state.page * ROWS_PER_PAGE;
+        const end = start + ROWS_PER_PAGE;
+        const rowsToShow = state.filteredRows.slice(start, end);
+        const noResultsRow = table.querySelector('tr.no-results');
+
+        state.rows.forEach((row) => {
+          if (row.classList.contains('no-results')) return;
+          row.style.display = 'none';
+        });
+
+        if (!state.filteredRows.length) {
+          const emptyRow = noResultsRow || ensureNoResultsRow(table);
+          emptyRow.style.display = 'table-row';
+        } else {
+          if (noResultsRow) {
+            noResultsRow.remove();
+          }
+          rowsToShow.forEach((row) => {
+            row.style.display = 'table-row';
+          });
+        }
+
+        state.totalPages = Math.ceil(state.filteredRows.length / ROWS_PER_PAGE);
+        updatePaginationStatus(table);
+      };
+
+      const applySearch = (table) => {
+        const state = tableState.get(table);
+        if (!state) return;
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        state.filteredRows = state.rows.filter((row) =>
+          row.textContent.trim().toLowerCase().includes(query)
+        );
+        state.page = 0;
+        updateTableRows(table);
+      };
+
+      const initTableState = (table) => {
+        if (!table || tableState.has(table)) return;
+        const rows = Array.from(table.tBodies[0].rows).filter(
+          (row) => !row.classList.contains('no-results')
+        );
+        tableState.set(table, {
+          rows,
+          filteredRows: rows.slice(),
+          page: 0,
+          totalPages: Math.ceil(rows.length / ROWS_PER_PAGE),
+        });
+        updateTableRows(table);
+      };
+
+      const handleTabChange = (target) => {
+        tabButtons.forEach((btn) => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.remove('active');
+          panel.setAttribute('hidden', '');
+        });
+
+        const activeButton = document.querySelector(`[data-tab="${target}"]`);
+        const activePanel = document.getElementById(`tab-${target}`);
+
+        if (activeButton && activePanel) {
+          activeButton.classList.add('active');
+          activeButton.setAttribute('aria-selected', 'true');
+          activePanel.classList.add('active');
+          activePanel.removeAttribute('hidden');
+
+          const activeTable = getActiveTable();
+          if (activeTable) {
+            initTableState(activeTable);
+            applySearch(activeTable);
+          }
+        }
+      };
 
       if (tabButtons.length && tabPanels.length) {
         tabButtons.forEach((button) => {
           button.addEventListener('click', () => {
+            handleTabChange(button.dataset.tab);
+          });
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const table = getActiveTable();
+          if (!table) return;
+          const state = tableState.get(table);
+          if (state.page > 0) {
+            state.page -= 1;
+            updateTableRows(table);
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const table = getActiveTable();
+          if (!table) return;
+          const state = tableState.get(table);
+          if (state.page < state.totalPages - 1) {
+            state.page += 1;
+            updateTableRows(table);
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const table = getActiveTable();
+          if (!table) return;
+          applySearch(table);
+        });
+      }
+
+      // Initialize the default active tab state
+      const initialTable = getActiveTable();
+      if (initialTable) {
+        initTableState(initialTable);
+        applySearch(initialTable);
             const target = button.dataset.tab;
 
             tabButtons.forEach((btn) => {

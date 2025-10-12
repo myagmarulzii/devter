@@ -661,6 +661,40 @@ select:focus {
   gap: 2rem;
 }
 
+.hub-toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-field {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(320px, 100%);
+}
+
+.search-field .search-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.search-field input {
+  border-radius: 999px;
+  border: 1px solid rgba(79, 70, 239, 0.2);
+  padding: 0.75rem 1.25rem;
+  background: rgba(79, 70, 239, 0.05);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-field input:focus {
+  outline: none;
+  border-color: rgba(79, 70, 239, 0.6);
+  box-shadow: 0 0 0 4px rgba(79, 70, 239, 0.12);
+}
+
 .tabbed-hub {
   display: grid;
   gap: 1.75rem;
@@ -713,6 +747,41 @@ select:focus {
 
 .tab-panel.active {
   display: flex;
+}
+
+.hub-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.page-btn {
+  border: 1px solid rgba(79, 70, 239, 0.25);
+  background: white;
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+}
+
+.page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.pagination-status {
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .panel-actions {
@@ -795,6 +864,13 @@ select:focus {
 
 .data-table tbody tr:hover {
   background: rgba(79, 70, 239, 0.05);
+}
+
+.data-table tr.no-results td {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
 .data-table.compact td,
@@ -1041,6 +1117,10 @@ select:focus {
 
 .utility-form input,
 .utility-form select,
+.utility-form textarea,
+.customer-form input,
+.customer-form select,
+.customer-form textarea {
 .utility-form textarea {
   width: 100%;
   padding: 0.85rem 1rem;
@@ -1053,6 +1133,10 @@ select:focus {
 
 .utility-form input:focus,
 .utility-form select:focus,
+.utility-form textarea:focus,
+.customer-form input:focus,
+.customer-form select:focus,
+.customer-form textarea:focus {
 .utility-form textarea:focus {
   outline: none;
   border-color: rgba(79, 70, 239, 0.55);
@@ -1182,5 +1266,114 @@ select:focus {
 
   .chip {
     padding: 0.35rem 0.75rem;
+  }
+}
+
+/* Add customer page */
+.add-customer-page .customer-form-section {
+  margin-top: 3rem;
+}
+
+.customer-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 2.5rem;
+}
+
+.customer-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.customer-form .form-row {
+  gap: 1.5rem;
+}
+
+.customer-form label {
+  display: grid;
+  gap: 0.65rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.customer-form label > span,
+.customer-form label > strong {
+  font-weight: 600;
+}
+
+.customer-form .chips {
+  flex-wrap: wrap;
+}
+
+.customer-summary {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.customer-summary li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.customer-summary span {
+  color: var(--muted);
+}
+
+.summary-divider {
+  height: 1px;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.summary-note {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.upcoming-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.upcoming-list strong {
+  font-size: 1rem;
+}
+
+.upcoming-list span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.activity-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.activity-list strong {
+  font-size: 0.95rem;
+}
+
+.activity-list span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 960px) {
+  .customer-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .customer-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-form label {
+    font-size: 0.95rem;
   }
 }
