@@ -27,59 +27,45 @@
     </header>
 
     <main class="utility-page add-customer-page">
-      <section class="utility-hero">
-        <div class="hero-text">
-          <span class="pill subtle">Customer Directory</span>
-          <h1>Capture customer details in one place</h1>
+      <section class="customer-form-section">
+        <div class="section-intro">
+          <span class="pill subtle">Profile Manager</span>
+          <h1>Shape customer records for any sector</h1>
           <p>
-            Create a complete record with verified contact information, communication
-            preferences, and helpful context so your team can deliver personalized
-            service every time.
+            Drag and drop optional fields into your intake so hospitals, retailers, and service teams always
+            capture the details that matter most.
           </p>
-          <div class="utility-stats">
-            <div>
-              <strong>128</strong>
-              <span>Active customers</span>
+        </div>
+
+        <article class="utility-card profile-manager" aria-labelledby="profile-manager-title">
+          <div class="card-header">
+            <h2 id="profile-manager-title">Drag-and-drop field designer</h2>
+            <p>Create sector-specific data points and arrange them to match your operating playbook.</p>
+          </div>
+          <div class="field-pool">
+            <div class="field-column">
+              <h3>Available fields</h3>
+              <p class="helper-text">Pull in optional questions depending on your sector.</p>
+              <ul class="field-list available" data-available-fields></ul>
             </div>
-            <div>
-              <strong>12</strong>
-              <span>New this month</span>
-            </div>
-            <div>
-              <strong>89%</strong>
-              <span>Engagement rate</span>
+            <div class="field-column">
+              <h3>Active intake fields</h3>
+              <p class="helper-text">Drop items here to add them to the form below.</p>
+              <ul class="field-list active" data-active-fields></ul>
+              <p class="drop-hint" data-active-empty>Drop fields to start tailoring your form.</p>
             </div>
           </div>
-        </div>
-        <aside class="hero-card">
-          <h2>Why capture details?</h2>
-          <ul class="queue-list">
-            <li>
-              <div>
-                <strong>Trusted communication</strong>
-                <span>Send reminders to verified numbers.</span>
-              </div>
-              <span class="badge confirmed">Fewer no-shows</span>
-            </li>
-            <li>
-              <div>
-                <strong>Tailored experiences</strong>
-                <span>Segment customers by intent or loyalty.</span>
-              </div>
-              <span class="badge pending">Higher retention</span>
-            </li>
-            <li>
-              <div>
-                <strong>Team alignment</strong>
-                <span>Share notes so staff know the context.</span>
-              </div>
-              <span class="badge feedback">Happy customers</span>
-            </li>
-          </ul>
-        </aside>
-      </section>
+          <div class="profile-tips">
+            <h3>Quick presets</h3>
+            <div class="preset-buttons">
+              <button type="button" class="btn ghost" data-preset="healthcare">Healthcare</button>
+              <button type="button" class="btn ghost" data-preset="automotive">Automotive</button>
+              <button type="button" class="btn ghost" data-preset="education">Education</button>
+            </div>
+            <p class="helper-text">Presets refresh the active panel with the fields teams in each sector use most.</p>
+          </div>
+        </article>
 
-      <section class="customer-form-section">
         <div class="customer-form-grid">
           <article class="utility-card">
             <div class="card-header">
@@ -169,6 +155,11 @@
                   </label>
                 </div>
               </label>
+              <div class="custom-fields" data-custom-fields>
+                <p class="custom-fields-empty" data-custom-empty>
+                  Drag fields from the profile manager above to capture sector-specific information.
+                </p>
+              </div>
               <label>
                 Notes
                 <textarea rows="4" placeholder="Share background details, preferences, or follow-up tasks."></textarea>
@@ -254,5 +245,398 @@
         <a href="#">Status</a>
       </div>
     </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const fieldCatalog = [
+          {
+            id: 'patientName',
+            label: 'Patient name',
+            type: 'text',
+            placeholder: 'e.g. Primary patient',
+            description: 'Healthcare intake contact for clinics and hospitals.',
+            helper: 'Use when the booking contact differs from the person receiving care.',
+            presets: ['healthcare'],
+          },
+          {
+            id: 'insuranceId',
+            label: 'Insurance policy number',
+            type: 'text',
+            placeholder: 'e.g. HN-45823',
+            description: 'Record coverage information to speed up billing.',
+            helper: 'Collect only when required for insurance claims or reimbursements.',
+            presets: ['healthcare'],
+          },
+          {
+            id: 'carPlate',
+            label: 'Car plate number',
+            type: 'text',
+            placeholder: 'e.g. ABC-1234',
+            description: 'Identify vehicles for auto repair, detailing, or inspection.',
+            helper: 'Match bookings to vehicles before they arrive on site.',
+            presets: ['automotive'],
+          },
+          {
+            id: 'vehicleModel',
+            label: 'Vehicle model',
+            type: 'text',
+            placeholder: 'e.g. Toyota Land Cruiser',
+            description: 'Capture make and model to prepare parts and expertise.',
+            helper: 'Add trim or year information to avoid ordering the wrong components.',
+            presets: ['automotive'],
+          },
+          {
+            id: 'warrantyStatus',
+            label: 'Warranty status',
+            type: 'select',
+            options: ['Under warranty', 'Out of warranty', 'Extended coverage'],
+            description: 'Monitor obligations before completing service work.',
+            helper: 'Use to route vehicles to the right advisor.',
+            presets: ['automotive'],
+          },
+          {
+            id: 'studentName',
+            label: 'Student name',
+            type: 'text',
+            placeholder: 'e.g. Learner receiving lessons',
+            description: 'Link tutoring appointments to the learner on record.',
+            helper: 'Attach guardians or billers in the notes if needed.',
+            presets: ['education'],
+          },
+          {
+            id: 'guardianContact',
+            label: 'Guardian contact',
+            type: 'tel',
+            placeholder: '+976 9911 2233',
+            description: 'Keep parents and guardians informed about progress.',
+            helper: 'Include country codes for reliable SMS and calls.',
+            presets: ['education'],
+          },
+          {
+            id: 'programTrack',
+            label: 'Program track',
+            type: 'select',
+            options: ['STEM tutoring', 'Language support', 'Exam prep'],
+            description: 'Map learners to the curriculum or service bundle they follow.',
+            helper: 'Update when customers switch programs mid-term.',
+            presets: ['education'],
+          },
+          {
+            id: 'birthday',
+            label: 'Birthday',
+            type: 'date',
+            description: 'Celebrate milestones and tailor age-based offers.',
+            helper: 'Use to trigger birthday reminders or age-specific campaigns.',
+            presets: ['healthcare', 'education'],
+          },
+          {
+            id: 'loyaltyId',
+            label: 'Loyalty ID',
+            type: 'text',
+            placeholder: 'e.g. GOLD-204',
+            description: 'Associate spend with loyalty or VIP perks.',
+            helper: 'Perfect for spas, salons, or repair shops with membership tiers.',
+            presets: ['automotive', 'education', 'healthcare'],
+          },
+          {
+            id: 'serviceHistory',
+            label: 'Service history notes',
+            type: 'textarea',
+            placeholder: 'Summarize prior visits or outcomes.',
+            description: 'Keep quick context handy for your frontline team.',
+            helper: 'Reference previous work so staff can suggest the next best action.',
+            presets: ['healthcare', 'automotive'],
+          },
+        ];
+
+        const defaultActive = ['patientName'];
+
+        const availableList = document.querySelector('[data-available-fields]');
+        const activeList = document.querySelector('[data-active-fields]');
+        const activeEmpty = document.querySelector('[data-active-empty]');
+        const customFieldsContainer = document.querySelector('[data-custom-fields]');
+        const customEmpty = document.querySelector('[data-custom-empty]');
+        const presetButtons = document.querySelectorAll('[data-preset]');
+
+        let activeFields = [];
+        let dragSource = null;
+
+        const getField = (id) => fieldCatalog.find((field) => field.id === id);
+
+        const updateEmptyStates = () => {
+          const hasActive = activeFields.length > 0;
+          if (activeEmpty) activeEmpty.hidden = hasActive;
+          if (customEmpty) customEmpty.hidden = hasActive;
+        };
+
+        const toggleAvailable = (fieldId, enable) => {
+          const item = availableList?.querySelector(`[data-field="${fieldId}"]`);
+          if (!item) return;
+          if (enable) {
+            item.classList.remove('is-disabled');
+            item.tabIndex = 0;
+            item.setAttribute('aria-disabled', 'false');
+          } else {
+            item.classList.add('is-disabled');
+            item.tabIndex = -1;
+            item.setAttribute('aria-disabled', 'true');
+          }
+        };
+
+        const createControl = (field, inputId) => {
+          let control;
+          if (field.type === 'textarea') {
+            control = document.createElement('textarea');
+            control.rows = 3;
+          } else if (field.type === 'select') {
+            control = document.createElement('select');
+            field.options?.forEach((option) => {
+              const opt = document.createElement('option');
+              opt.value = option;
+              opt.textContent = option;
+              control.appendChild(opt);
+            });
+          } else {
+            control = document.createElement('input');
+            control.type = field.type || 'text';
+          }
+
+          control.id = inputId;
+          control.name = field.id;
+          if (field.placeholder && control instanceof HTMLInputElement) {
+            control.placeholder = field.placeholder;
+          }
+          if (field.placeholder && control instanceof HTMLTextAreaElement) {
+            control.placeholder = field.placeholder;
+          }
+          if (field.type === 'tel') {
+            control.inputMode = 'tel';
+          }
+          return control;
+        };
+
+        const addCustomField = (field, position) => {
+          if (!customFieldsContainer) return;
+          const wrapper = document.createElement('div');
+          wrapper.className = 'custom-field';
+          wrapper.dataset.field = field.id;
+
+          const label = document.createElement('label');
+          label.setAttribute('for', `custom-${field.id}`);
+          label.textContent = field.label;
+
+          const helper = document.createElement('p');
+          helper.className = 'helper-text';
+          helper.textContent = field.helper || '';
+
+          const control = createControl(field, `custom-${field.id}`);
+
+          wrapper.appendChild(label);
+          if (field.helper) {
+            wrapper.appendChild(helper);
+          }
+          wrapper.appendChild(control);
+
+          const existing = Array.from(customFieldsContainer.querySelectorAll('.custom-field'));
+          if (Number.isInteger(position) && position >= 0 && position < existing.length) {
+            customFieldsContainer.insertBefore(wrapper, existing[position]);
+          } else {
+            customFieldsContainer.appendChild(wrapper);
+          }
+          updateEmptyStates();
+        };
+
+        const reorderCustomFields = () => {
+          if (!customFieldsContainer) return;
+          const elements = activeFields
+            .map((id) => customFieldsContainer.querySelector(`.custom-field[data-field="${id}"]`))
+            .filter(Boolean);
+          elements.forEach((element) => customFieldsContainer.appendChild(element));
+        };
+
+        const deactivateField = (fieldId) => {
+          const index = activeFields.indexOf(fieldId);
+          if (index === -1) return;
+          activeFields.splice(index, 1);
+          const chip = activeList?.querySelector(`.field-chip[data-field="${fieldId}"]`);
+          chip?.remove();
+          const custom = customFieldsContainer?.querySelector(`.custom-field[data-field="${fieldId}"]`);
+          custom?.remove();
+          toggleAvailable(fieldId, true);
+          updateEmptyStates();
+        };
+
+        const createActiveChip = (field) => {
+          const item = document.createElement('li');
+          item.className = 'field-chip active-chip';
+          item.draggable = true;
+          item.dataset.field = field.id;
+          item.innerHTML = `
+            <span class="drag-handle" aria-hidden="true">⋮⋮</span>
+            <div class="field-meta">
+              <strong>${field.label}</strong>
+              <small>${field.description}</small>
+            </div>
+            <button type="button" class="chip-remove" aria-label="Remove ${field.label}">
+              &times;
+            </button>
+          `;
+          item.querySelector('.chip-remove')?.addEventListener('click', () => deactivateField(field.id));
+          item.addEventListener('dragstart', (event) => {
+            dragSource = item;
+            item.classList.add('is-dragging');
+            event.dataTransfer?.setData('text/plain', field.id);
+            event.dataTransfer?.setDragImage(item, 16, 16);
+          });
+          item.addEventListener('dragend', () => {
+            item.classList.remove('is-dragging');
+            dragSource = null;
+          });
+          return item;
+        };
+
+        const activateField = (fieldId, position) => {
+          if (!activeList) return;
+          const field = getField(fieldId);
+          if (!field) return;
+
+          if (activeFields.includes(fieldId)) {
+            moveActiveField(fieldId, position);
+            return;
+          }
+
+          const chip = createActiveChip(field);
+          const children = Array.from(activeList.children);
+          if (Number.isInteger(position) && position >= 0 && position < children.length) {
+            activeList.insertBefore(chip, children[position]);
+            activeFields.splice(position, 0, fieldId);
+          } else {
+            activeList.appendChild(chip);
+            activeFields.push(fieldId);
+          }
+
+          toggleAvailable(fieldId, false);
+          addCustomField(field, position ?? activeFields.length - 1);
+          updateEmptyStates();
+        };
+
+        const moveActiveField = (fieldId, position) => {
+          if (!activeList) return;
+          const currentIndex = activeFields.indexOf(fieldId);
+          if (currentIndex === -1) return;
+
+          const chip = activeList.querySelector(`.field-chip[data-field="${fieldId}"]`);
+          if (!chip) return;
+
+          const newIndex = Number.isInteger(position) ? position : activeFields.length - 1;
+          if (newIndex === currentIndex) return;
+
+          activeFields.splice(currentIndex, 1);
+          const boundedIndex = Math.max(0, Math.min(newIndex, activeFields.length));
+          activeFields.splice(boundedIndex, 0, fieldId);
+
+          const siblings = Array.from(activeList.children).filter((child) => child !== chip);
+          if (boundedIndex >= siblings.length) {
+            activeList.appendChild(chip);
+          } else {
+            activeList.insertBefore(chip, siblings[boundedIndex]);
+          }
+          reorderCustomFields();
+        };
+
+        const renderAvailable = (field) => {
+          if (!availableList) return;
+          const item = document.createElement('li');
+          item.className = 'field-chip';
+          item.draggable = true;
+          item.dataset.field = field.id;
+          item.tabIndex = 0;
+          item.setAttribute('role', 'button');
+          item.setAttribute('aria-disabled', 'false');
+          item.innerHTML = `
+            <span class="drag-handle" aria-hidden="true">⋮⋮</span>
+            <div class="field-meta">
+              <strong>${field.label}</strong>
+              <small>${field.description}</small>
+            </div>
+          `;
+          item.addEventListener('click', () => activateField(field.id));
+          item.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              activateField(field.id);
+            }
+          });
+          item.addEventListener('dragstart', (event) => {
+            if (item.classList.contains('is-disabled')) {
+              event.preventDefault();
+              return;
+            }
+            dragSource = item;
+            item.classList.add('is-dragging');
+            event.dataTransfer?.setData('text/plain', field.id);
+            event.dataTransfer?.setDragImage(item, 16, 16);
+          });
+          item.addEventListener('dragend', () => {
+            item.classList.remove('is-dragging');
+            dragSource = null;
+          });
+          availableList.appendChild(item);
+        };
+
+        const getDropIndex = (list, clientY) => {
+          const items = Array.from(list.querySelectorAll('.field-chip:not(.is-dragging)'));
+          for (let index = 0; index < items.length; index += 1) {
+            const rect = items[index].getBoundingClientRect();
+            if (clientY < rect.top + rect.height / 2) {
+              return index;
+            }
+          }
+          return items.length;
+        };
+
+        activeList?.addEventListener('dragover', (event) => {
+          event.preventDefault();
+        });
+
+        activeList?.addEventListener('drop', (event) => {
+          event.preventDefault();
+          const fieldId = dragSource?.dataset.field || event.dataTransfer?.getData('text/plain');
+          if (!fieldId) return;
+          const index = getDropIndex(activeList, event.clientY);
+
+          if (dragSource && dragSource.parentElement === availableList) {
+            activateField(fieldId, index);
+          } else {
+            moveActiveField(fieldId, index);
+          }
+        });
+
+        availableList?.addEventListener('dragover', (event) => {
+          if (dragSource && dragSource.parentElement === activeList) {
+            event.preventDefault();
+          }
+        });
+
+        availableList?.addEventListener('drop', (event) => {
+          if (!dragSource || dragSource.parentElement !== activeList) return;
+          event.preventDefault();
+          const fieldId = dragSource.dataset.field;
+          deactivateField(fieldId);
+        });
+
+        presetButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const preset = button.dataset.preset;
+            const selected = fieldCatalog.filter((field) => field.presets?.includes(preset));
+            [...activeFields].forEach((fieldId) => deactivateField(fieldId));
+            selected.forEach((field) => activateField(field.id));
+          });
+        });
+
+        fieldCatalog.forEach(renderAvailable);
+        defaultActive.forEach((fieldId) => activateField(fieldId));
+        updateEmptyStates();
+      });
+    </script>
   </body>
 </html>

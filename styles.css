@@ -1264,6 +1264,210 @@ select:focus {
   margin-top: 3rem;
 }
 
+.customer-form-section .section-intro {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  max-width: 52ch;
+}
+
+.customer-form-section .section-intro h1 {
+  font-size: clamp(2rem, 3.6vw, 2.6rem);
+}
+
+.customer-form-section .section-intro p {
+  color: var(--muted);
+}
+
+.profile-manager {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.75rem;
+}
+
+.profile-manager .card-header p {
+  color: var(--muted);
+}
+
+.field-pool {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.field-column {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field-column h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.field-column .helper-text,
+.profile-tips .helper-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.field-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.field-list.available {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+}
+
+.field-list.active {
+  border: 2px dashed rgba(0, 87, 164, 0.4);
+  border-radius: 1rem;
+  padding: 1rem;
+  min-height: 168px;
+  background: rgba(0, 87, 164, 0.04);
+  transition: border-color 0.2s ease;
+}
+
+.field-chip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 18px -14px rgba(15, 23, 42, 0.35);
+  cursor: grab;
+}
+
+.field-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.field-chip.active-chip {
+  border: 1px solid rgba(0, 87, 164, 0.18);
+  background: linear-gradient(135deg, rgba(0, 87, 164, 0.12), rgba(200, 16, 46, 0.08));
+}
+
+.field-chip.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.field-chip.is-dragging {
+  opacity: 0.6;
+}
+
+.field-chip .field-meta {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field-chip .field-meta strong {
+  font-size: 0.95rem;
+}
+
+.field-chip .field-meta small {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.drag-handle {
+  font-size: 1.1rem;
+  color: rgba(15, 23, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1rem;
+}
+
+.chip-remove {
+  border: none;
+  background: transparent;
+  color: rgba(15, 23, 42, 0.5);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 999px;
+}
+
+.chip-remove:hover {
+  background: rgba(200, 16, 46, 0.08);
+  color: var(--accent);
+}
+
+.drop-hint {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.profile-tips {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.profile-tips h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.65);
+}
+
+.preset-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.preset-buttons .btn {
+  padding: 0.5rem 1.2rem;
+}
+
+.custom-fields {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(0, 87, 164, 0.16);
+  background: rgba(0, 87, 164, 0.05);
+}
+
+.custom-fields-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.custom-field {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.custom-field label {
+  font-weight: 600;
+}
+
+.custom-field .helper-text {
+  margin-top: -0.25rem;
+}
+
+.custom-field input,
+.custom-field select,
+.custom-field textarea {
+  width: 100%;
+}
+
 .customer-form-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
@@ -1356,6 +1560,10 @@ select:focus {
   .customer-form-grid {
     grid-template-columns: 1fr;
   }
+
+  .profile-manager {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1365,6 +1573,11 @@ select:focus {
 
   .customer-form label {
     font-size: 0.95rem;
+  }
+
+  .preset-buttons {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
