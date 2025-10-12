@@ -17,6 +17,7 @@
       <div class="logo">devter CRM</div>
       <nav class="nav-links">
         <a href="#dashboard-overview">Overview</a>
+        <a href="#relationship-hub">Customers &amp; Schedule</a>
         <a href="#customer-records">Customers</a>
         <a href="#appointment-records">Appointments</a>
         <a href="#activity-log">Activity</a>
@@ -96,6 +97,248 @@
         </article>
       </section>
 
+      <section class="data-card" id="relationship-hub">
+        <div class="section-heading">
+          <div>
+            <span class="pill subtle">Relationship Hub</span>
+            <h2>Customers, Schedule &amp; Updates</h2>
+            <p>Manage your customer directory, appointment pipeline, and recent activity without leaving this view.</p>
+          </div>
+        </div>
+        <div class="tabbed-hub">
+          <div class="tab-buttons" role="tablist" aria-label="Customer relationship hub">
+            <button
+              class="tab-button active"
+              type="button"
+              data-tab="customers"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab-customers"
+              id="tab-customers-btn"
+            >
+              Registered Customers
+            </button>
+            <button
+              class="tab-button"
+              type="button"
+              data-tab="appointments"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-appointments"
+              id="tab-appointments-btn"
+            >
+              Upcoming Schedule
+            </button>
+            <button
+              class="tab-button"
+              type="button"
+              data-tab="activity"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-activity"
+              id="tab-activity-btn"
+            >
+              Activity Log
+            </button>
+          </div>
+          <div class="tab-panels">
+            <div class="tab-panel active" id="tab-customers" role="tabpanel" aria-labelledby="tab-customers-btn">
+              <div class="panel-actions">
+                <div class="section-actions">
+                  <button class="btn ghost">Export CSV</button>
+                  <button class="btn primary">Add Customer</button>
+                </div>
+              </div>
+              <div class="table-wrapper">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Contact</th>
+                      <th>Loyalty</th>
+                      <th>Last Visit</th>
+                      <th>Next Appointment</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>Anna Smith</strong>
+                        <span class="subtle-text">Preferred</span>
+                      </td>
+                      <td>
+                        <div class="contact-cell">
+                          <span>+1 646 555 0102</span>
+                          <span>anna.smith@email.com</span>
+                        </div>
+                      </td>
+                      <td><span class="tag success">Gold</span></td>
+                      <td>Apr 15, 2024</td>
+                      <td>May 2, 2024 &middot; 09:00 AM</td>
+                      <td>Interested in product launch preview.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>James Carter</strong>
+                        <span class="subtle-text">Walk-in</span>
+                      </td>
+                      <td>
+                        <div class="contact-cell">
+                          <span>+1 917 555 0198</span>
+                          <span>jcarter@demo.com</span>
+                        </div>
+                      </td>
+                      <td><span class="tag neutral">Silver</span></td>
+                      <td>Apr 11, 2024</td>
+                      <td>Apr 28, 2024 &middot; 02:30 PM</td>
+                      <td>Requested follow-up consultation.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Lucia Ortega</strong>
+                        <span class="subtle-text">Referred</span>
+                      </td>
+                      <td>
+                        <div class="contact-cell">
+                          <span>+1 347 555 0114</span>
+                          <span>lucia.ortega@mail.com</span>
+                        </div>
+                      </td>
+                      <td><span class="tag success">Platinum</span></td>
+                      <td>Apr 17, 2024</td>
+                      <td>May 6, 2024 &middot; 11:15 AM</td>
+                      <td>Send VIP promo prior to visit.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Devon Turner</strong>
+                        <span class="subtle-text">Preferred</span>
+                      </td>
+                      <td>
+                        <div class="contact-cell">
+                          <span>+1 212 555 0181</span>
+                          <span>devon.turner@bizmail.com</span>
+                        </div>
+                      </td>
+                      <td><span class="tag warning">Bronze</span></td>
+                      <td>Apr 9, 2024</td>
+                      <td>May 1, 2024 &middot; 04:00 PM</td>
+                      <td>Offer seasonal discount bundle.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-panel" id="tab-appointments" role="tabpanel" hidden aria-labelledby="tab-appointments-btn">
+              <div class="panel-actions">
+                <div class="section-actions">
+                  <button class="btn ghost">Send Reminders</button>
+                  <button class="btn primary">Add Slot</button>
+                </div>
+              </div>
+              <div class="table-wrapper">
+                <table class="data-table compact">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Customer</th>
+                      <th>Service</th>
+                      <th>Status</th>
+                      <th>Assigned Staff</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Apr 25, 2024</td>
+                      <td>09:00 AM</td>
+                      <td>Anna Smith</td>
+                      <td>Retail Strategy Consultation</td>
+                      <td><span class="tag success">Confirmed</span></td>
+                      <td>Jordan Lee</td>
+                      <td>
+                        <button class="btn ghost btn-small">Reschedule</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Apr 25, 2024</td>
+                      <td>11:30 AM</td>
+                      <td>James Carter</td>
+                      <td>Merchandising Review</td>
+                      <td><span class="tag neutral">Pending</span></td>
+                      <td>Jordan Lee</td>
+                      <td>
+                        <button class="btn ghost btn-small">Confirm</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Apr 25, 2024</td>
+                      <td>03:00 PM</td>
+                      <td>Lucia Ortega</td>
+                      <td>Inventory Audit</td>
+                      <td><span class="tag warning">Awaiting Prep</span></td>
+                      <td>Stella Park</td>
+                      <td>
+                        <button class="btn ghost btn-small">Notify</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Apr 26, 2024</td>
+                      <td>10:30 AM</td>
+                      <td>Devon Turner</td>
+                      <td>Point-of-Sale Training</td>
+                      <td><span class="tag success">Confirmed</span></td>
+                      <td>Jordan Lee</td>
+                      <td>
+                        <button class="btn ghost btn-small">Reschedule</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-panel" id="tab-activity" role="tabpanel" hidden aria-labelledby="tab-activity-btn">
+              <div class="panel-actions">
+                <div class="section-actions">
+                  <button class="btn ghost">Filter</button>
+                </div>
+              </div>
+              <ul class="activity-feed">
+                <li>
+                  <span class="feed-time">08:45 AM</span>
+                  <div>
+                    <strong>Reminder sent</strong>
+                    <p>Automatic SMS reminder delivered to Anna Smith for her 09:00 AM appointment.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="feed-time">08:10 AM</span>
+                  <div>
+                    <strong>Customer rescheduled</strong>
+                    <p>James Carter moved his merchandising review to Apr 25 at 11:30 AM.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="feed-time">Yesterday</span>
+                  <div>
+                    <strong>Feedback received</strong>
+                    <p>Lucia Ortega rated her experience 5 stars and left a positive comment.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="feed-time">Yesterday</span>
+                  <div>
+                    <strong>Slot added</strong>
+                    <p>New availability opened for Apr 29 by Jordan Lee.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="data-card" id="customer-records">
         <div class="section-heading">
           <div>
@@ -320,5 +563,36 @@
         <a href="#">Status</a>
       </div>
     </footer>
+    <script>
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      if (tabButtons.length && tabPanels.length) {
+        tabButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const target = button.dataset.tab;
+
+            tabButtons.forEach((btn) => {
+              btn.classList.remove('active');
+              btn.setAttribute('aria-selected', 'false');
+            });
+
+            tabPanels.forEach((panel) => {
+              panel.classList.remove('active');
+              panel.setAttribute('hidden', '');
+            });
+
+            button.classList.add('active');
+            button.setAttribute('aria-selected', 'true');
+
+            const activePanel = document.getElementById(`tab-${target}`);
+            if (activePanel) {
+              activePanel.classList.add('active');
+              activePanel.removeAttribute('hidden');
+            }
+          });
+        });
+      }
+    </script>
   </body>
 </html>
