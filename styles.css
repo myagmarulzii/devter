@@ -1121,6 +1121,7 @@ select:focus {
 .customer-form input,
 .customer-form select,
 .customer-form textarea {
+.utility-form textarea {
   width: 100%;
   padding: 0.85rem 1rem;
   border-radius: 0.85rem;
@@ -1136,6 +1137,7 @@ select:focus {
 .customer-form input:focus,
 .customer-form select:focus,
 .customer-form textarea:focus {
+.utility-form textarea:focus {
   outline: none;
   border-color: rgba(79, 70, 239, 0.55);
   box-shadow: 0 0 0 4px rgba(79, 70, 239, 0.15);
