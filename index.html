@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM & Appointment System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="logo">devter CRM</div>
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#business-portal">Business Portal</a>
+      <a href="#customer-portal">Customer Portal</a>
+      <a href="#appointments">Appointments</a>
+      <a href="#notifications">Notifications</a>
+    </nav>
+    <a class="btn primary" href="#cta">Get Started</a>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="hero-content">
+        <span class="pill">Built for SMBs</span>
+        <h1>All-in-one CRM & Appointment System</h1>
+        <p>
+          Launch a fully functional customer relationship and appointment scheduling platform tailored to small
+          and medium-sized business owners. Manage profiles, bookings, and client communication from a single,
+          intuitive workspace.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#cta">Start Free Trial</a>
+          <a class="btn ghost" href="#business-portal">See How It Works</a>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <div class="card-stack">
+          <article class="card">
+            <h3>Today</h3>
+            <ul>
+              <li>
+                <span class="time">09:00</span>
+                <span class="details">
+                  <strong>Consultation</strong>
+                  <small>Anna Smith</small>
+                </span>
+                <span class="status confirmed">Confirmed</span>
+              </li>
+              <li>
+                <span class="time">11:30</span>
+                <span class="details">
+                  <strong>Follow-up Call</strong>
+                  <small>Horizon Clinic</small>
+                </span>
+                <span class="status pending">Pending</span>
+              </li>
+              <li>
+                <span class="time">15:00</span>
+                <span class="details">
+                  <strong>Demo Session</strong>
+                  <small>Bright Retail</small>
+                </span>
+                <span class="status confirmed">Confirmed</span>
+              </li>
+            </ul>
+          </article>
+          <article class="card secondary">
+            <h3>Business Profile</h3>
+            <p>Retail &bull; Verified</p>
+            <dl>
+              <div>
+                <dt>Company</dt>
+                <dd>Bright Retail Co.</dd>
+              </div>
+              <div>
+                <dt>Phone</dt>
+                <dd>+1 212 555 0198</dd>
+              </div>
+              <div>
+                <dt>Reg No.</dt>
+                <dd>BR-458933</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="business-portal">
+      <div class="section-header">
+        <span class="pill">Business Owner Portal</span>
+        <h2>Control your operations with a streamlined workspace</h2>
+        <p>
+          Set up your business profile in minutes, manage appointments with ease, and keep track of customer
+          feedback. All the tools you need are neatly organized in one dashboard.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <article class="feature-card">
+          <h3>Create & Manage Profile</h3>
+          <p>Capture essential information effortlessly. Update any detail at any time.</p>
+          <form class="profile-form">
+            <label>
+              Phone Number
+              <input type="tel" placeholder="e.g. +1 415 555 0123" />
+            </label>
+            <label>
+              Company Registration
+              <input type="text" placeholder="e.g. CR-908123" />
+            </label>
+            <label>
+              Business Name
+              <input type="text" placeholder="Your Company LLC" />
+            </label>
+            <label>
+              Sector
+              <select>
+                <option>Retail</option>
+                <option>Healthcare</option>
+                <option>Beauty</option>
+                <option>Education</option>
+                <option>Professional Services</option>
+              </select>
+            </label>
+            <button type="button" class="btn primary">Save Profile</button>
+          </form>
+        </article>
+        <article class="feature-card">
+          <h3>Monitor Customer Experience</h3>
+          <ul class="list-check">
+            <li>Edit business details instantly</li>
+            <li>Track appointment history with contextual notes</li>
+            <li>Review customer feedback and ratings</li>
+          </ul>
+          <div class="insight-card">
+            <h4>Feedback Snapshot</h4>
+            <div class="feedback">
+              <div class="avatar">JS</div>
+              <div>
+                <strong>Jane Spencer</strong>
+                <p>
+                  "Service was quick and professional. Booking reminders were incredibly helpful!"
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="split-section" id="customer-portal">
+      <div class="section-header">
+        <span class="pill">Customer Portal</span>
+        <h2>Delight customers with a frictionless booking experience</h2>
+        <p>
+          Help customers discover your business, schedule appointments, and stay informed with automated reminders.
+        </p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>Discover & Book</h3>
+          <div class="search">
+            <input type="search" placeholder="Search businesses or sectors" />
+            <button class="btn primary" type="button">Search</button>
+          </div>
+          <div class="business-list">
+            <article>
+              <h4>Glow Beauty Studio</h4>
+              <p>Beauty & Wellness &bull; +1 646 555 0145</p>
+              <button class="btn ghost" type="button">View Profile</button>
+            </article>
+            <article>
+              <h4>NextGen Tutors</h4>
+              <p>Education &bull; +1 917 555 0182</p>
+              <button class="btn ghost" type="button">View Profile</button>
+            </article>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Book an Appointment</h3>
+          <form class="booking-form">
+            <label>
+              Select Business
+              <select>
+                <option>Glow Beauty Studio</option>
+                <option>NextGen Tutors</option>
+                <option>Horizon Healthcare</option>
+              </select>
+            </label>
+            <div class="date-time">
+              <label>
+                Date
+                <input type="date" />
+              </label>
+              <label>
+                Time
+                <input type="time" />
+              </label>
+            </div>
+            <label>
+              Full Name
+              <input type="text" placeholder="Customer name" />
+            </label>
+            <label>
+              Contact Number
+              <input type="tel" placeholder="Phone number" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="Email address" />
+            </label>
+            <button class="btn primary" type="button">Confirm Appointment</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section" id="appointments">
+      <div class="section-header">
+        <span class="pill">Appointment Management</span>
+        <h2>Stay on top of every booking</h2>
+        <p>
+          Customize availability, approve requests, and keep your calendar in sync. Customers enjoy instant
+          confirmations and easy access to manage their bookings.
+        </p>
+      </div>
+      <div class="cards-grid three">
+        <article class="feature-card">
+          <h3>Scheduling Control</h3>
+          <p>Define recurring availability and ad-hoc slots with intuitive calendar tools.</p>
+          <ul class="list-check">
+            <li>Add, edit, or delete time slots</li>
+            <li>Block out holidays and breaks</li>
+            <li>Sync with Google or Outlook calendars</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <h3>Upcoming Appointments</h3>
+          <div class="appointment-list">
+            <div class="appointment">
+              <span>
+                <strong>Glow Beauty Studio</strong>
+                <small>Today &bull; 10:30 AM</small>
+              </span>
+              <button class="btn ghost" type="button">Reschedule</button>
+            </div>
+            <div class="appointment">
+              <span>
+                <strong>NextGen Tutors</strong>
+                <small>Tomorrow &bull; 04:00 PM</small>
+              </span>
+              <button class="btn ghost" type="button">Notify</button>
+            </div>
+          </div>
+        </article>
+        <article class="feature-card">
+          <h3>Customer Experience</h3>
+          <p>Send confirmations instantly and let customers modify appointments with one click.</p>
+          <ul class="list-check">
+            <li>Customers can cancel or reschedule</li>
+            <li>Automated confirmation receipts</li>
+            <li>Flexible reminder schedule</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid-section" id="notifications">
+      <div class="section-header">
+        <span class="pill">Communication & Notifications</span>
+        <h2>Keep everyone informed</h2>
+        <p>
+          Leverage SMS or email to keep customers and staff aligned. Send reminders, updates, and personalised
+          messages without leaving the dashboard.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <article class="feature-card">
+          <h3>Automated Messages</h3>
+          <p>Choose between SMS or email notifications and tailor message templates for each service.</p>
+          <div class="notification-preview">
+            <span class="label">Preview</span>
+            <p>Hi Anna, this is a reminder of your appointment with Glow Beauty Studio on Oct 21 at 3:00 PM.</p>
+          </div>
+        </article>
+        <article class="feature-card">
+          <h3>Admin Control</h3>
+          <ul class="list-check">
+            <li>Manage business and customer accounts</li>
+            <li>Approve sectors and tags</li>
+            <li>Moderate feedback submissions</li>
+          </ul>
+          <p class="note">*Admin panel is optional and can be enabled as your operation grows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid-section" id="security">
+      <div class="section-header">
+        <span class="pill">Security & Privacy</span>
+        <h2>Enterprise-grade protection for growing businesses</h2>
+        <p>
+          Protect your customers' personal data with built-in safeguards and compliance-first architecture.
+        </p>
+      </div>
+      <div class="cards-grid three">
+        <article class="feature-card compact">
+          <h3>SSL Encryption</h3>
+          <p>Every interaction is encrypted end-to-end for peace of mind.</p>
+        </article>
+        <article class="feature-card compact">
+          <h3>Phone Verification</h3>
+          <p>Verify business owners via SMS to ensure trusted profiles.</p>
+        </article>
+        <article class="feature-card compact">
+          <h3>Compliance Ready</h3>
+          <p>GDPR-friendly data management keeps personal information protected.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid-section" id="roadmap">
+      <div class="section-header">
+        <span class="pill">Future Enhancements</span>
+        <h2>Scale with advanced capabilities</h2>
+        <p>
+          Unlock more experiences as your customer base grows. Expand your toolkit with payments, multi-language
+          support, and staff collaboration features.
+        </p>
+      </div>
+      <div class="cards-grid three">
+        <article class="feature-card compact">
+          <h3>Integrated Payments</h3>
+          <p>Accept deposits and full payments during booking.</p>
+        </article>
+        <article class="feature-card compact">
+          <h3>Multi-language</h3>
+          <p>Offer localized customer journeys for global audiences.</p>
+        </article>
+        <article class="feature-card compact">
+          <h3>Staff Management</h3>
+          <p>Assign appointments to team members with independent calendars.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" id="cta">
+      <div class="cta-content">
+        <h2>Ready to streamline your customer journey?</h2>
+        <p>Try devter CRM free for 14 days. No credit card required.</p>
+        <form class="cta-form">
+          <input type="email" placeholder="Enter your work email" />
+          <button class="btn primary" type="button">Get Started</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <strong>devter CRM</strong>
+        <p>Helping small businesses deliver delightful appointment experiences.</p>
+      </div>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#business-portal">Business Portal</a>
+        <a href="#customer-portal">Customer Portal</a>
+        <a href="#appointments">Appointments</a>
+        <a href="#security">Security</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="#roadmap">Product Roadmap</a>
+        <a href="#notifications">Notifications</a>
+        <a href="#cta">Contact</a>
+      </div>
+    </div>
+    <p class="footer-note">© 2024 devter CRM. Built for SMBs worldwide.</p>
+  </footer>
+</body>
+</html>
