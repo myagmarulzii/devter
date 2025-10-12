@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Owner Login — devter CRM</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="logo">devter CRM</div>
+      <nav class="nav-links">
+        <a href="index.html#business-portal">Business Portal</a>
+        <a href="index.html#customer-portal">Customer Portal</a>
+        <a href="index.html#appointments">Scheduling</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn ghost" href="index.html">Back to Site</a>
+        <a class="btn primary" href="index.html#cta">Create Profile</a>
+      </div>
+    </header>
+
+    <main class="auth-page">
+      <div class="auth-grid">
+        <section class="auth-hero">
+          <span class="pill subtle">Business Owner Access</span>
+          <h1>Sign in with your verified phone number</h1>
+          <p>
+            Manage appointments, customer conversations, and availability in a
+            single, secure workspace built for small and medium-sized teams.
+          </p>
+          <ul class="auth-bullets">
+            <li>Track every booking and its status in real time</li>
+            <li>Send confirmations and reminders with one click</li>
+            <li>Keep customer feedback and history in one place</li>
+          </ul>
+        </section>
+
+        <section class="auth-card">
+          <header>
+            <h2>Welcome back</h2>
+            <p>Enter your phone number to receive a secure access code.</p>
+          </header>
+          <form class="auth-form" action="dashboard.html">
+            <label>
+              Phone number
+              <input type="tel" placeholder="e.g. +1 415 555 0198" required />
+            </label>
+            <div class="inline-fields">
+              <label>
+                Access code
+                <input type="text" placeholder="6-digit code" inputmode="numeric" />
+              </label>
+              <label>
+                PIN
+                <input type="password" placeholder="••••" />
+              </label>
+            </div>
+            <div class="auth-meta">
+              <label class="auth-remember">
+                <input type="checkbox" />
+                Remember this device
+              </label>
+              <a href="#">Need help?</a>
+            </div>
+            <button type="submit" class="btn primary full-width">Continue to dashboard</button>
+          </form>
+          <footer>
+            <span>New here? Create your business profile to get started.</span>
+            <a href="index.html#cta">Launch setup</a>
+          </footer>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
