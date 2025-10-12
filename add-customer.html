@@ -37,10 +37,24 @@
           </p>
         </div>
 
-        <article class="utility-card profile-manager" aria-labelledby="profile-manager-title">
+        <article
+          class="utility-card profile-manager"
+          data-profile-manager
+          aria-labelledby="profile-manager-title"
+          aria-expanded="true"
+        >
           <div class="card-header">
             <h2 id="profile-manager-title">Drag-and-drop field designer</h2>
             <p>Create sector-specific data points and arrange them to match your operating playbook.</p>
+          </div>
+          <div class="profile-tips">
+            <h3>Quick presets</h3>
+            <div class="preset-buttons">
+              <button type="button" class="btn ghost" data-preset="healthcare">Healthcare</button>
+              <button type="button" class="btn ghost" data-preset="automotive">Automotive</button>
+              <button type="button" class="btn ghost" data-preset="education">Education</button>
+            </div>
+            <p class="helper-text">Presets refresh the active panel with the fields teams in each sector use most.</p>
           </div>
           <div class="field-pool">
             <div class="field-column">
@@ -55,14 +69,13 @@
               <p class="drop-hint" data-active-empty>Drop fields to start tailoring your form.</p>
             </div>
           </div>
-          <div class="profile-tips">
-            <h3>Quick presets</h3>
-            <div class="preset-buttons">
-              <button type="button" class="btn ghost" data-preset="healthcare">Healthcare</button>
-              <button type="button" class="btn ghost" data-preset="automotive">Automotive</button>
-              <button type="button" class="btn ghost" data-preset="education">Education</button>
-            </div>
-            <p class="helper-text">Presets refresh the active panel with the fields teams in each sector use most.</p>
+          <div class="designer-summary" data-designer-summary hidden>
+            <strong>Layout saved.</strong>
+            <p data-summary-copy></p>
+          </div>
+          <div class="designer-actions">
+            <button type="button" class="btn ghost" data-reopen-designer hidden>Adjust fields</button>
+            <button type="button" class="btn primary" data-confirm-designer>Confirm layout</button>
           </div>
         </article>
 
@@ -356,6 +369,11 @@
         const customFieldsContainer = document.querySelector('[data-custom-fields]');
         const customEmpty = document.querySelector('[data-custom-empty]');
         const presetButtons = document.querySelectorAll('[data-preset]');
+        const profileManager = document.querySelector('[data-profile-manager]');
+        const designerSummary = document.querySelector('[data-designer-summary]');
+        const summaryCopy = document.querySelector('[data-summary-copy]');
+        const confirmButton = document.querySelector('[data-confirm-designer]');
+        const reopenButton = document.querySelector('[data-reopen-designer]');
 
         let activeFields = [];
         let dragSource = null;
@@ -366,6 +384,38 @@
           const hasActive = activeFields.length > 0;
           if (activeEmpty) activeEmpty.hidden = hasActive;
           if (customEmpty) customEmpty.hidden = hasActive;
+        };
+
+        const updateSummaryCopy = () => {
+          if (!summaryCopy) return;
+          const labels = activeFields
+            .map((id) => getField(id)?.label)
+            .filter(Boolean);
+
+          if (!labels.length) {
+            summaryCopy.textContent =
+              'No custom fields yet—add sector-specific details whenever you need them.';
+            return;
+          }
+
+          if (labels.length === 1) {
+            summaryCopy.textContent = `Layout includes ${labels[0]}—tweak the designer anytime.`;
+            return;
+          }
+
+          const lastLabel = labels[labels.length - 1];
+          const initial = labels.slice(0, -1).join(', ');
+          const labelList = initial ? `${initial} and ${lastLabel}` : lastLabel;
+          summaryCopy.textContent = `Layout includes ${labels.length} fields: ${labelList}. Tweak the designer anytime.`;
+        };
+
+        const setCollapsed = (collapsed) => {
+          if (!profileManager) return;
+          profileManager.classList.toggle('is-collapsed', collapsed);
+          profileManager.setAttribute('aria-expanded', String(!collapsed));
+          if (designerSummary) designerSummary.hidden = !collapsed;
+          if (confirmButton) confirmButton.hidden = collapsed;
+          if (reopenButton) reopenButton.hidden = !collapsed;
         };
 
         const toggleAvailable = (fieldId, enable) => {
@@ -463,6 +513,9 @@
           custom?.remove();
           toggleAvailable(fieldId, true);
           updateEmptyStates();
+          if (profileManager?.classList.contains('is-collapsed')) {
+            updateSummaryCopy();
+          }
         };
 
         const createActiveChip = (field) => {
@@ -517,6 +570,9 @@
           toggleAvailable(fieldId, false);
           addCustomField(field, position ?? activeFields.length - 1);
           updateEmptyStates();
+          if (profileManager?.classList.contains('is-collapsed')) {
+            updateSummaryCopy();
+          }
         };
 
         const moveActiveField = (fieldId, position) => {
@@ -541,6 +597,9 @@
             activeList.insertBefore(chip, siblings[boundedIndex]);
           }
           reorderCustomFields();
+          if (profileManager?.classList.contains('is-collapsed')) {
+            updateSummaryCopy();
+          }
         };
 
         const renderAvailable = (field) => {
@@ -630,12 +689,27 @@
             const selected = fieldCatalog.filter((field) => field.presets?.includes(preset));
             [...activeFields].forEach((fieldId) => deactivateField(fieldId));
             selected.forEach((field) => activateField(field.id));
+            if (profileManager?.classList.contains('is-collapsed')) {
+              updateSummaryCopy();
+            }
           });
+        });
+
+        confirmButton?.addEventListener('click', () => {
+          updateSummaryCopy();
+          setCollapsed(true);
+          reopenButton?.focus();
+        });
+
+        reopenButton?.addEventListener('click', () => {
+          setCollapsed(false);
+          confirmButton?.focus();
         });
 
         fieldCatalog.forEach(renderAvailable);
         defaultActive.forEach((fieldId) => activateField(fieldId));
         updateEmptyStates();
+        setCollapsed(false);
       });
     </script>
   </body>
