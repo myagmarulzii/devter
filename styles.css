@@ -1,7 +1,7 @@
 :root {
-  --primary: #4f46ef;
-  --primary-dark: #3b35c8;
-  --accent: #f97316;
+  --primary: #ffc528;
+  --primary-dark: #d99a00;
+  --accent: #ffc528;
   --bg: #f5f7fb;
   --card-bg: #ffffff;
   --text: #0f172a;
@@ -50,6 +50,7 @@ a:hover {
 .logo {
   font-weight: 700;
   font-size: 1.2rem;
+  color: var(--primary);
 }
 
 .nav-links {
@@ -73,12 +74,12 @@ a:hover {
 .btn.primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  box-shadow: 0 12px 30px -12px rgba(79, 70, 239, 0.7);
+  box-shadow: 0 12px 30px -12px rgba(255, 197, 40, 0.7);
 }
 
 .btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 32px -12px rgba(79, 70, 239, 0.6);
+  box-shadow: 0 16px 32px -12px rgba(255, 197, 40, 0.6);
 }
 
 .btn.ghost {
@@ -120,7 +121,7 @@ main {
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.85rem;
-  background: rgba(79, 70, 239, 0.12);
+  background: rgba(255, 197, 40, 0.12);
   border-radius: 999px;
   color: var(--primary);
   font-weight: 600;
@@ -200,7 +201,7 @@ main {
 }
 
 .card.secondary {
-  background: linear-gradient(180deg, rgba(79, 70, 239, 0.08), rgba(79, 70, 239, 0));
+  background: linear-gradient(180deg, rgba(255, 197, 40, 0.08), rgba(255, 197, 40, 0));
 }
 
 .card.secondary dl {
@@ -295,8 +296,8 @@ select {
 input:focus,
 select:focus {
   outline: none;
-  border-color: rgba(79, 70, 239, 0.7);
-  box-shadow: 0 0 0 4px rgba(79, 70, 239, 0.12);
+  border-color: rgba(255, 197, 40, 0.7);
+  box-shadow: 0 0 0 4px rgba(255, 197, 40, 0.12);
 }
 
 .list-check {
@@ -315,7 +316,7 @@ select:focus {
   border-radius: 1.2rem;
   border: 1px solid rgba(148, 163, 184, 0.22);
   padding: 1.5rem;
-  background: rgba(79, 70, 239, 0.06);
+  background: rgba(255, 197, 40, 0.06);
 }
 
 .feedback {
@@ -408,10 +409,10 @@ select:focus {
 }
 
 .notification-preview {
-  border: 1px dashed rgba(79, 70, 239, 0.4);
+  border: 1px dashed rgba(255, 197, 40, 0.4);
   border-radius: 1rem;
   padding: 1rem 1.25rem;
-  background: rgba(79, 70, 239, 0.06);
+  background: rgba(255, 197, 40, 0.06);
 }
 
 .notification-preview .label {
@@ -431,13 +432,13 @@ select:focus {
 
 .cta {
   margin: 6rem 0 3rem;
-  background: radial-gradient(circle at top left, rgba(79, 70, 239, 0.18), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.18), transparent 55%),
+  background: radial-gradient(circle at top left, rgba(255, 197, 40, 0.18), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(255, 197, 40, 0.18), transparent 55%),
     var(--card-bg);
   border-radius: 2rem;
   padding: clamp(3rem, 6vw, 4rem);
   border: 1px solid rgba(148, 163, 184, 0.16);
-  box-shadow: 0 30px 60px -40px rgba(79, 70, 239, 0.5);
+  box-shadow: 0 30px 60px -40px rgba(255, 197, 40, 0.5);
 }
 
 .cta-content {
@@ -605,7 +606,7 @@ select:focus {
   font-size: 0.75rem;
   padding: 0.35rem 0.85rem;
   font-weight: 600;
-  background: rgba(79, 70, 239, 0.1);
+  background: rgba(255, 197, 40, 0.1);
   color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -622,7 +623,7 @@ select:focus {
 }
 
 .badge.feedback {
-  background: rgba(249, 115, 22, 0.18);
+  background: rgba(255, 197, 40, 0.18);
   color: var(--accent);
 }
 
@@ -670,7 +671,7 @@ select:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  background: rgba(79, 70, 239, 0.08);
+  background: rgba(255, 197, 40, 0.08);
   border-radius: 999px;
   padding: 0.4rem;
 }
@@ -691,14 +692,14 @@ select:focus {
 }
 
 .tab-button:focus-visible {
-  outline: 2px solid rgba(79, 70, 239, 0.8);
+  outline: 2px solid rgba(255, 197, 40, 0.8);
   outline-offset: 2px;
 }
 
 .tab-button.active {
   background: var(--primary);
   color: white;
-  box-shadow: 0 10px 30px -15px rgba(79, 70, 239, 0.8);
+  box-shadow: 0 10px 30px -15px rgba(255, 197, 40, 0.8);
 }
 
 .tab-panels {
@@ -725,7 +726,7 @@ select:focus {
 }
 
 .page-btn {
-  border: 1px solid rgba(79, 70, 239, 0.25);
+  border: 1px solid rgba(255, 197, 40, 0.25);
   background: white;
   color: var(--primary);
   font-weight: 600;
@@ -799,7 +800,7 @@ select:focus {
 }
 
 .pill.subtle {
-  background: rgba(79, 70, 239, 0.08);
+  background: rgba(255, 197, 40, 0.08);
   color: var(--primary);
 }
 
@@ -829,7 +830,7 @@ select:focus {
 }
 
 .data-table tbody tr:hover {
-  background: rgba(79, 70, 239, 0.05);
+  background: rgba(255, 197, 40, 0.05);
 }
 
 .data-table tr.no-results td {
@@ -881,7 +882,7 @@ select:focus {
 }
 
 .tag.neutral {
-  background: rgba(79, 70, 239, 0.12);
+  background: rgba(255, 197, 40, 0.12);
   color: var(--primary);
 }
 
@@ -988,7 +989,7 @@ select:focus {
 }
 
 .utility-stats div {
-  background: rgba(79, 70, 239, 0.08);
+  background: rgba(255, 197, 40, 0.08);
   border-radius: 1rem;
   padding: 1rem 1.25rem;
   display: grid;
@@ -1103,8 +1104,8 @@ select:focus {
 .customer-form select:focus,
 .customer-form textarea:focus {
   outline: none;
-  border-color: rgba(79, 70, 239, 0.55);
-  box-shadow: 0 0 0 4px rgba(79, 70, 239, 0.15);
+  border-color: rgba(255, 197, 40, 0.55);
+  box-shadow: 0 0 0 4px rgba(255, 197, 40, 0.15);
 }
 
 .utility-form textarea {
@@ -1155,7 +1156,7 @@ select:focus {
 }
 
 .chip input:checked {
-  border-color: rgba(79, 70, 239, 0.55);
+  border-color: rgba(255, 197, 40, 0.55);
 }
 
 .chip input:checked::after {
@@ -1205,7 +1206,7 @@ select:focus {
 }
 
 .data-table.mini tbody tr:hover {
-  background: rgba(79, 70, 239, 0.08);
+  background: rgba(255, 197, 40, 0.08);
 }
 
 @media (max-width: 960px) {
