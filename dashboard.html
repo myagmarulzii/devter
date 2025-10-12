@@ -146,6 +146,16 @@
           </div>
           <div class="tab-panels">
             <div class="tab-panel active" id="tab-customers" role="tabpanel" aria-labelledby="tab-customers-btn">
+              <div class="selected-fields-banner" data-selected-fields>
+                <div class="selected-fields-header">
+                  <span class="banner-label">Custom intake fields</span>
+                  <a class="inline-link" href="add-customer.html">Adjust in profile manager</a>
+                </div>
+                <div class="selected-fields-list" data-selected-list></div>
+                <p class="helper-text" data-selected-empty>
+                  Drag fields into your intake on the profile manager page to sync them across your dashboard views.
+                </p>
+              </div>
               <div class="table-wrapper">
                 <table class="data-table">
                   <thead>
@@ -238,6 +248,16 @@
               </div>
             </div>
             <div class="tab-panel" id="tab-appointments" role="tabpanel" hidden aria-labelledby="tab-appointments-btn">
+              <div class="selected-fields-banner" data-selected-fields>
+                <div class="selected-fields-header">
+                  <span class="banner-label">Custom intake fields</span>
+                  <a class="inline-link" href="add-customer.html">Adjust in profile manager</a>
+                </div>
+                <div class="selected-fields-list" data-selected-list></div>
+                <p class="helper-text" data-selected-empty>
+                  Drag fields into your intake on the profile manager page to sync them across your dashboard views.
+                </p>
+              </div>
               <div class="table-wrapper">
                 <table class="data-table compact">
                   <thead>
@@ -311,6 +331,16 @@
               </div>
             </div>
             <div class="tab-panel" id="tab-updates" role="tabpanel" hidden aria-labelledby="tab-updates-btn">
+              <div class="selected-fields-banner" data-selected-fields>
+                <div class="selected-fields-header">
+                  <span class="banner-label">Custom intake fields</span>
+                  <a class="inline-link" href="add-customer.html">Adjust in profile manager</a>
+                </div>
+                <div class="selected-fields-list" data-selected-list></div>
+                <p class="helper-text" data-selected-empty>
+                  Drag fields into your intake on the profile manager page to sync them across your dashboard views.
+                </p>
+              </div>
               <div class="table-wrapper">
                 <table class="data-table compact">
                   <thead>
@@ -390,6 +420,7 @@
       </div>
     </footer>
     <script>
+      const SELECTED_FIELDS_KEY = 'devter-selected-fields';
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabPanels = document.querySelectorAll('.tab-panel');
       const pagination = document.querySelector('.hub-pagination');
@@ -397,8 +428,65 @@
       const nextBtn = pagination?.querySelector('[data-page="next"]');
       const currentPageEl = document.getElementById('hub-page-current');
       const totalPageEl = document.getElementById('hub-page-total');
+      const selectedFieldContainers = document.querySelectorAll('[data-selected-fields]');
+      const selectedFieldLists = document.querySelectorAll('[data-selected-list]');
       const ROWS_PER_PAGE = 3;
       const tableState = new Map();
+
+      const getStoredSelectedFields = () => {
+        try {
+          const raw = localStorage.getItem(SELECTED_FIELDS_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          return parsed
+            .map((entry) =>
+              entry && typeof entry === 'object'
+                ? { id: entry.id, label: entry.label || entry.id }
+                : null
+            )
+            .filter((item) => item && item.label);
+        } catch (error) {
+          return [];
+        }
+      };
+
+      const renderSelectedFieldChips = () => {
+        const fields = getStoredSelectedFields();
+        selectedFieldLists.forEach((list) => {
+          if (!list) return;
+          list.innerHTML = '';
+          if (!fields.length) {
+            list.setAttribute('hidden', '');
+            return;
+          }
+          list.removeAttribute('hidden');
+          fields.forEach((field) => {
+            const chip = document.createElement('span');
+            chip.className = 'selected-field-chip';
+            chip.textContent = field.label;
+            list.appendChild(chip);
+          });
+        });
+
+        selectedFieldContainers.forEach((container) => {
+          const emptyMessage = container.querySelector('[data-selected-empty]');
+          if (!emptyMessage) return;
+          if (fields.length) {
+            emptyMessage.setAttribute('hidden', '');
+          } else {
+            emptyMessage.removeAttribute('hidden');
+          }
+        });
+      };
+
+      renderSelectedFieldChips();
+
+      window.addEventListener('storage', (event) => {
+        if (event.key === SELECTED_FIELDS_KEY) {
+          renderSelectedFieldChips();
+        }
+      });
 
       const getActiveTable = () => {
         const activePanel = document.querySelector('.tab-panel.active');

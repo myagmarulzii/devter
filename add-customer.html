@@ -60,6 +60,16 @@
             <div class="field-column">
               <h3>Available fields</h3>
               <p class="helper-text">Pull in optional questions depending on your sector.</p>
+              <div class="field-search">
+                <label for="field-search-input">Search available fields</label>
+                <input
+                  type="search"
+                  id="field-search-input"
+                  name="field-search-input"
+                  placeholder="Type to filter by name or use case"
+                  data-field-search
+                />
+              </div>
               <ul class="field-list available" data-available-fields></ul>
             </div>
             <div class="field-column">
@@ -235,6 +245,7 @@
     </footer>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        const SELECTED_FIELDS_KEY = 'devter-selected-fields';
         const fieldCatalog = [
           {
             id: 'patientName',
@@ -336,8 +347,7 @@
           },
         ];
 
-        const defaultActive = ['patientName'];
-
+        const fieldSearch = document.querySelector('[data-field-search]');
         const availableList = document.querySelector('[data-available-fields]');
         const activeList = document.querySelector('[data-active-fields]');
         const activeEmpty = document.querySelector('[data-active-empty]');
@@ -350,8 +360,25 @@
         const confirmButton = document.querySelector('[data-confirm-designer]');
         const reopenButton = document.querySelector('[data-reopen-designer]');
 
+        let searchTerm = '';
         let activeFields = [];
         let dragSource = null;
+
+        const storedSelection = (() => {
+          try {
+            const saved = JSON.parse(localStorage.getItem(SELECTED_FIELDS_KEY));
+            if (Array.isArray(saved)) {
+              return saved
+                .map((entry) => entry?.id)
+                .filter((id) => fieldCatalog.some((field) => field.id === id));
+            }
+          } catch (error) {
+            // Ignore malformed data and fall back to defaults
+          }
+          return [];
+        })();
+
+        const defaultActive = storedSelection.length ? storedSelection : ['patientName'];
 
         const getField = (id) => fieldCatalog.find((field) => field.id === id);
 
@@ -359,6 +386,22 @@
           const hasActive = activeFields.length > 0;
           if (activeEmpty) activeEmpty.hidden = hasActive;
           if (customEmpty) customEmpty.hidden = hasActive;
+        };
+
+        const persistActiveFields = () => {
+          const payload = activeFields
+            .map((id) => {
+              const field = getField(id);
+              if (!field) return null;
+              return { id: field.id, label: field.label };
+            })
+            .filter(Boolean);
+
+          try {
+            localStorage.setItem(SELECTED_FIELDS_KEY, JSON.stringify(payload));
+          } catch (error) {
+            // Swallow storage errors (e.g., quota exceeded or disabled)
+          }
         };
 
         const updateSummaryCopy = () => {
@@ -393,6 +436,17 @@
           if (reopenButton) reopenButton.hidden = !collapsed;
         };
 
+        const applySearchFilter = () => {
+          if (!availableList) return;
+          const items = availableList.querySelectorAll('.field-chip');
+          items.forEach((item) => {
+            const label = item.querySelector('strong')?.textContent?.toLowerCase() || '';
+            const description = item.querySelector('small')?.textContent?.toLowerCase() || '';
+            const matches = !searchTerm || label.includes(searchTerm) || description.includes(searchTerm);
+            item.style.display = matches ? '' : 'none';
+          });
+        };
+
         const toggleAvailable = (fieldId, enable) => {
           const item = availableList?.querySelector(`[data-field="${fieldId}"]`);
           if (!item) return;
@@ -405,6 +459,7 @@
             item.tabIndex = -1;
             item.setAttribute('aria-disabled', 'true');
           }
+          applySearchFilter();
         };
 
         const createControl = (field, inputId) => {
@@ -488,6 +543,7 @@
           custom?.remove();
           toggleAvailable(fieldId, true);
           updateEmptyStates();
+          persistActiveFields();
           if (profileManager?.classList.contains('is-collapsed')) {
             updateSummaryCopy();
           }
@@ -545,6 +601,7 @@
           toggleAvailable(fieldId, false);
           addCustomField(field, position ?? activeFields.length - 1);
           updateEmptyStates();
+          persistActiveFields();
           if (profileManager?.classList.contains('is-collapsed')) {
             updateSummaryCopy();
           }
@@ -572,6 +629,7 @@
             activeList.insertBefore(chip, siblings[boundedIndex]);
           }
           reorderCustomFields();
+          persistActiveFields();
           if (profileManager?.classList.contains('is-collapsed')) {
             updateSummaryCopy();
           }
@@ -615,6 +673,7 @@
             dragSource = null;
           });
           availableList.appendChild(item);
+          applySearchFilter();
         };
 
         const getDropIndex = (list, clientY) => {
@@ -670,6 +729,12 @@
           });
         });
 
+        fieldSearch?.addEventListener('input', (event) => {
+          const value = event.target.value;
+          searchTerm = value.trim().toLowerCase();
+          applySearchFilter();
+        });
+
         confirmButton?.addEventListener('click', () => {
           updateSummaryCopy();
           setCollapsed(true);
@@ -685,6 +750,7 @@
         defaultActive.forEach((fieldId) => activateField(fieldId));
         updateEmptyStates();
         setCollapsed(false);
+        applySearchFilter();
       });
     </script>
   </body>
