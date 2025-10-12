@@ -1,8 +1,9 @@
 :root {
   --primary: #cbffd8;
   --primary-dark: #9adfb0;
-  --accent: #49c586;
-  --accent-dark: #2f8f5d;
+  --accent: #50c98b;
+  --accent-dark: #368c64;
+  --accent-contrast: #0f6b42;
   --highlight: #e6fff2;
   --bg: #f6fff9;
   --card-bg: #ffffff;
@@ -12,8 +13,8 @@
   --success: #1c8c57;
   --warning: #ffd166;
   --primary-rgb: 203, 255, 216;
-  --accent-rgb: 73, 197, 134;
-  --accent-dark-rgb: 47, 143, 93;
+  --accent-rgb: 80, 201, 139;
+  --accent-dark-rgb: 54, 140, 100;
   font-size: 16px;
 }
 
@@ -93,25 +94,27 @@ a:hover {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  box-shadow: 0 12px 30px -12px rgba(var(--accent-rgb), 0.7);
+  background: #50c98b;
+  color: #0a3721;
+  box-shadow: 0 12px 28px -14px rgba(var(--accent-rgb), 0.65);
 }
 
 .btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 32px -12px rgba(var(--accent-rgb), 0.6);
+  background: #45bb81;
+  box-shadow: 0 16px 34px -14px rgba(var(--accent-rgb), 0.6);
 }
 
 .btn.ghost {
   background: transparent;
-  border-color: rgba(15, 23, 42, 0.12);
-  color: var(--text);
+  border-color: rgba(var(--accent-rgb), 0.45);
+  color: var(--accent-contrast);
 }
 
 .btn.ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: transparent;
+  background: rgba(var(--accent-rgb), 0.15);
+  color: var(--accent-contrast);
 }
 
 main {
@@ -699,7 +702,7 @@ select:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  background: rgba(var(--accent-rgb), 0.08);
+  background: rgba(var(--accent-dark-rgb), 0.1);
   border-radius: 999px;
   padding: 0.4rem;
 }
@@ -707,7 +710,7 @@ select:focus {
 .tab-button {
   border: none;
   background: transparent;
-  color: var(--muted);
+  color: rgba(15, 23, 42, 0.7);
   font-weight: 600;
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
@@ -725,9 +728,9 @@ select:focus {
 }
 
 .tab-button.active {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  box-shadow: 0 10px 30px -15px rgba(var(--accent-rgb), 0.8);
+  background: #50c98b;
+  color: #0a3721;
+  box-shadow: 0 10px 26px -15px rgba(var(--accent-rgb), 0.75);
 }
 
 .tab-panels {
@@ -741,10 +744,10 @@ select:focus {
 }
 
 .selected-fields-banner {
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(var(--accent-dark-rgb), 0.25);
   border-radius: 1.2rem;
   padding: 1rem 1.25rem;
-  background: rgba(var(--accent-rgb), 0.05);
+  background: rgba(var(--accent-dark-rgb), 0.12);
   display: grid;
   gap: 0.75rem;
 }
@@ -809,20 +812,21 @@ select:focus {
 }
 
 .page-btn {
-  border: 1px solid rgba(var(--accent-rgb), 0.25);
-  background: white;
-  color: var(--primary);
+  border: none;
+  background: #50c98b;
+  color: #0a3721;
   font-weight: 600;
   padding: 0.55rem 1.4rem;
   border-radius: 999px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 10px 24px -16px rgba(var(--accent-rgb), 0.6);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .page-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  border-color: transparent;
+  background: #45bb81;
+  color: #052916;
+  box-shadow: 0 14px 30px -16px rgba(var(--accent-rgb), 0.55);
 }
 
 .page-btn:disabled {
@@ -884,8 +888,8 @@ select:focus {
 }
 
 .pill.subtle {
-  background: rgba(var(--accent-rgb), 0.08);
-  color: var(--primary);
+  background: var(--accent-contrast);
+  color: #f2fff8;
 }
 
 .table-wrapper {
@@ -1073,7 +1077,7 @@ select:focus {
 }
 
 .utility-stats div {
-  background: rgba(var(--accent-rgb), 0.08);
+  background: rgba(var(--accent-dark-rgb), 0.15);
   border-radius: 1rem;
   padding: 1rem 1.25rem;
   display: grid;
@@ -1530,8 +1534,8 @@ select:focus {
   gap: 0.35rem;
   padding: 1rem 1.25rem;
   border-radius: 0.9rem;
-  border: 1px solid rgba(var(--accent-rgb), 0.2);
-  background: rgba(var(--accent-rgb), 0.07);
+  border: 1px solid rgba(var(--accent-dark-rgb), 0.25);
+  background: rgba(var(--accent-dark-rgb), 0.12);
 }
 
 .designer-summary strong {
