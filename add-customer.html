@@ -86,31 +86,6 @@
               <p>Fill out the essentials so you can reach and delight them later.</p>
             </div>
             <form class="customer-form">
-              <div class="form-row">
-                <label>
-                  Full name
-                  <input type="text" placeholder="e.g. Jordan Lee" />
-                </label>
-                <label>
-                  Phone number
-                  <input type="tel" placeholder="e.g. +1 415 555 0199" />
-                </label>
-              </div>
-              <div class="form-row">
-                <label>
-                  Email address
-                  <input type="email" placeholder="e.g. jordan@email.com" />
-                </label>
-                <label>
-                  Customer type
-                  <select>
-                    <option>Preferred</option>
-                    <option>New lead</option>
-                    <option>Walk-in</option>
-                    <option>Corporate</option>
-                  </select>
-                </label>
-              </div>
               <label>
                 Communication preferences
                 <div class="input-group chips">
@@ -128,6 +103,11 @@
                   </label>
                 </div>
               </label>
+              <div class="custom-fields" data-custom-fields>
+                <p class="custom-fields-empty" data-custom-empty>
+                  Drag fields from the profile manager above to capture sector-specific information.
+                </p>
+              </div>
               <div class="form-row">
                 <label>
                   Preferred appointment day
@@ -168,11 +148,6 @@
                   </label>
                 </div>
               </label>
-              <div class="custom-fields" data-custom-fields>
-                <p class="custom-fields-empty" data-custom-empty>
-                  Drag fields from the profile manager above to capture sector-specific information.
-                </p>
-              </div>
               <label>
                 Notes
                 <textarea rows="4" placeholder="Share background details, preferences, or follow-up tasks."></textarea>
