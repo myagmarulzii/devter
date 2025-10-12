@@ -1,0 +1,32 @@
+/*
+  Custom theme overrides
+  -----------------------
+  Drop your own CSS variables and component overrides in this file to restyle the CRM experience.
+  Example:
+  :root {
+    --primary: #123456;
+    --accent: #abcdef;
+  }
+
+  Any rules placed here will cascade after the core stylesheet.
+*/
+
+:root {
+  /* Uncomment and adjust the variables below to match your brand palette */
+  /*
+  --primary: #0b3c5d;
+  --primary-dark: #082840;
+  --accent: #c80036;
+  --highlight: #ffd046;
+  --bg: #f4f4f8;
+  --card-bg: #ffffff;
+  --text: #0e1a2a;
+  --muted: #4a5a6a;
+  --border: #d8dee6;
+  --success: #1b9a59;
+  --warning: #f7b731;
+  */
+}
+
+/* Add component-level overrides below */
+
