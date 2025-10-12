@@ -15,16 +15,14 @@
   /* Uncomment and adjust the variables below to match your brand palette */
   /*
   --primary: #0b3c5d;
-  --primary-dark: #082840;
+  --primary-foreground: #ffffff;
   --accent: #c80036;
-  --highlight: #ffd046;
-  --bg: #f4f4f8;
-  --card-bg: #ffffff;
-  --text: #0e1a2a;
-  --muted: #4a5a6a;
+  --accent-foreground: #1e1b4b;
+  --background: #f4f4f8;
+  --card: #ffffff;
+  --foreground: #0e1a2a;
+  --muted-foreground: #4a5a6a;
   --border: #d8dee6;
-  --success: #1b9a59;
-  --warning: #f7b731;
   */
 }
 
